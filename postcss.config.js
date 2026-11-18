@@ -9,7 +9,7 @@ export default {
         if (selector === ':root' || selector === 'html' || selector === 'body') {
           return prefix;
         }
-        if (selector.startsWith('.rdc\\:')) {
+        if (selector.startsWith('.mode\\:')) {
           return `${prefix}${selector}, ${prefix} ${selector}`;
         }
         return prefixedSelector;

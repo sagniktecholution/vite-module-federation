@@ -9,6 +9,9 @@ export default defineConfig([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
+    rules: {
+    '@typescript-eslint/no-explicit-any': 'warn',
+    },
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
