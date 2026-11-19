@@ -1,0 +1,26 @@
+# Dependencies are installed inside the image
+node_modules
+
+# Build output is regenerated inside the image
+dist
+
+# Version control metadata
+.git
+.gitignore
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment files
+.env
+.env.*
+
+# Editor and OS files
+.vscode
+.idea
+.DS_Store
+

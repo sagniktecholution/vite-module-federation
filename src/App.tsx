@@ -226,10 +226,9 @@ const Navigation = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`
                   mode:flex mode:items-center mode:gap-3 mode:px-4 mode:py-3 mode:rounded-xl mode:transition-all mode:duration-200
-                  ${
-                    isActive
-                      ? "mode:bg-blue-50 mode:text-blue-700 mode:font-semibold mode:shadow-sm"
-                      : "mode:text-gray-600 hover:mode:bg-gray-50 hover:mode:text-gray-900"
+                  ${isActive
+                    ? "mode:bg-blue-50 mode:text-blue-700 mode:font-semibold mode:shadow-sm"
+                    : "mode:text-gray-600 hover:mode:bg-gray-50 hover:mode:text-gray-900"
                   }
                 `}
               >
