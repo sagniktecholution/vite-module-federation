@@ -21,6 +21,7 @@ import { PrimeReactProvider } from "primereact/api";
 
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { Button } from "primereact/button";
+import { useHostMicroFrontendApi } from "./microfrontend/hooks/useHostMicroFrontend";
 
 const getBasePath = () => {
   const path = window.location.pathname;
@@ -253,6 +254,22 @@ const Navigation = ({
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const microFrontendApi = useHostMicroFrontendApi();
+
+  const handleDummyDispatch = () => {
+    if (!microFrontendApi) {
+      console.error("Micro frontend API is not available; DUMMY_EVENT was not dispatched.");
+      return;
+    }
+    try {
+      microFrontendApi.dispatch("DUMMY_EVENT", {
+        message: "dummy payload",
+        timestamp: Date.now(),
+      });
+    } catch (err: unknown) {
+      console.error("Failed to dispatch DUMMY_EVENT", err);
+    }
+  };
 
   return (
     <PrimeReactProvider>
@@ -340,8 +357,14 @@ export default function App() {
                   </Routes>
                 </div>
 
-                <div className="mode:w-8 mode:h-8 mode:rounded-full mode:bg-indigo-100 mode:flex mode:items-center mode:justify-center mode:border mode:border-indigo-200">
-                  <User className="mode:w-4 mode:h-4 mode:text-indigo-600" />
+                <div className="mode:flex mode:items-center mode:gap-4">
+                  <Button
+                    label="Dispatch DUMMY_EVENT"
+                    onClick={handleDummyDispatch}
+                  />
+                  <div className="mode:w-8 mode:h-8 mode:rounded-full mode:bg-indigo-100 mode:flex mode:items-center mode:justify-center mode:border mode:border-indigo-200">
+                    <User className="mode:w-4 mode:h-4 mode:text-indigo-600" />
+                  </div>
                 </div>
               </header>
 
